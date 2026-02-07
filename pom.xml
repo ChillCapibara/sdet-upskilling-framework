@@ -11,6 +11,7 @@
     <modules>
         <module>framework-core</module>
         <module>framework-web</module>
+        <module>framework-api</module>
     </modules>
 
     <properties>
