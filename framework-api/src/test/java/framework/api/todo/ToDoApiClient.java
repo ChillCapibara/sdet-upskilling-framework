@@ -1,8 +1,8 @@
 package framework.api.todo;
 
-import com.szymon.common.clients.ApiClient;
-import com.szymon.common.clients.RestAssuredClient;
-import com.szymon.common.endpoints.ToDoEndpoints;
+import framework.api.client.ApiClient;
+import framework.api.client.RestAssuredClient;
+import framework.api.endpoints.ToDoEndpoints;
 import io.restassured.response.Response;
 
 public class ToDoApiClient {

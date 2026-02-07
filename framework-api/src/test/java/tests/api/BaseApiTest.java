@@ -1,4 +1,4 @@
-package framework.tests.api;
+package tests.api;
 
 import io.restassured.RestAssured;
 import org.testng.annotations.BeforeClass;
