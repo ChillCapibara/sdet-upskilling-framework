@@ -8,20 +8,24 @@ public final class Config {
     private static final Properties props = new Properties();
 
     static {
-        try (InputStream is = Config.class.getClassLoader().getResourceAsStream("config.properties")) {
+        try (InputStream is = Config.class.getClassLoader().getResourceAsStream("framework.properties")) {
             if (is == null){
-                throw new RuntimeException("config.properties not found in classpath!");
+                throw new RuntimeException("framework.properties not found in classpath!");
             }
             props.load(is);
         } catch (IOException e){
-            throw new RuntimeException("Failed to load config.properties", e);
+            throw new RuntimeException("Failed to load framework.properties", e);
         }
     }
 
-    public static String get(String key){
-        //Setup for CI in the future, System properties override config file
+    public static String get(String key) {
         String sys = System.getProperty(key);
-        return sys != null ? sys : props.getProperty(key);
+        if (sys != null && !sys.isBlank()) return sys;
+
+        String env = System.getenv(key.replace('.', '_').toUpperCase());
+        if (env != null && !env.isBlank()) return env;
+
+        return props.getProperty(key);
     }
 
     public static Integer getInt(String key){

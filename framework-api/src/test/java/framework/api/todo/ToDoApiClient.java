@@ -8,23 +8,23 @@ import io.restassured.response.Response;
 public class ToDoApiClient {
     private final ApiClient client = new RestAssuredClient();
 
-    public Response getAll() {
+    public Response getTodos() {
         return client.get(ToDoEndpoints.GET_TODOS.path());
     }
 
-    public Response getById(long id) {
+    public Response getTodoById(long id) {
         return client.get(ToDoEndpoints.GET_TODO_BY_ID.path(id));
     }
 
-    public Response update(long id, Object body) {
-        return client.put(ToDoEndpoints.PUT_TODO.path(id), body);
+    public Response postTodo(Object payload) {
+        return client.post(ToDoEndpoints.POST_TODO.path(), payload);
     }
 
-    public Response create(Object body) {
-        return client.post(ToDoEndpoints.POST_TODO.path(), body);
+    public Response putTodo(long id, Object payload) {
+        return client.put(ToDoEndpoints.PUT_TODO.path(id), payload);
     }
 
-    public Response delete(long id) {
+    public Response deleteTodo(long id) {
         return client.delete(ToDoEndpoints.DELETE_TODO.path(id));
     }
 }

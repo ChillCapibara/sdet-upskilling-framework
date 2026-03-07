@@ -9,10 +9,11 @@ public enum ToDoEndpoints {
 
     private final String path;
 
-    ToDoEndpoints(String path){this.path = path;}
+    ToDoEndpoints(String path) { this.path = path; }
 
-    public String path(Object... args){
-        return args.length == 0 ? path : String.format(path, args);
+    public String path() { return path; }
+
+    public String path(long id) {
+        return String.format(path, id);
     }
-
 }
